@@ -7,7 +7,6 @@ def _run(command):
 		return
 
 	old_position = ''.join(spcommand._send_hypr_command("cursorpos")).replace(" ", '').split(',')
-	print(old_position)
 
 	match command[1]:
 		case "1":
@@ -33,10 +32,4 @@ def _run(command):
 		case _:
 			print("This only supports 5 workspaces for now")
 
-	for index in old_position:
-		print(index)
-
-	print(f'this is what i\'m sending: "dispatch movecursor {old_position[0]} {old_position[1]}" ')
-	position = spcommand._send_hypr_command(f'dispatch movecursor {old_position[0]} {old_position[1]}')
-	print(position)
-	print(spcommand._send_hypr_command('cursorpos'))
+	spcommand._send_hypr_command(f'dispatch movecursor {old_position[0]} {old_position[1]}')
