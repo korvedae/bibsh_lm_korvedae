@@ -34,25 +34,40 @@ def listen_to_events():
 			print("Event:", data.decode().strip())
 
 def _client_socket():
+	try:
+		os.unlink(client_socket_path)
+	except OSError:
+		if os.path.exists(client_socket_path):
+			raise
 	with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as sock:
-		try:
-			os.unlink(client_socket_path)
-		except OSError:
-			if os.path.exists(client_socket_path):
-				raise
 		sock.bind(client_socket_path)
-		sock.listen(1)
+		sock.listen()
+
 		print(f'Client Socket Opened at {client_socket_path}')
 
-
-def listen_for_client():
-	with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as sock:
-		sock.connect(client_socket_path)
 		while True:
-			data = sock.recv(4096)
-			if not data:
-				break
-			client_handler(data.decode().strip())
+			conn, _ = sock.accept()
+			with conn:
+				print("Client connnected")
+				data = conn.recv(1024)
+				if data:
+					command = data.decode()
+					client_handler(command)
+				else:
+					print("No command specified.")
+def client_handler(command: str):
+	command = command.rstrip()
+	print(f'Command recived "{command}"')
+	match command:
+		case "workspace":
+			print("HELLO")
+			send_command("dispatch workspace 1001")
+			send_command("dispatch workspace 1002")
+			send_command("dispatch workspace 1003")
+	print(command)
+	pass
+
+
 
 # Send a command to Hyprland
 def send_command(command: str):
@@ -66,11 +81,6 @@ def event_handler(event: str):
 	event_keyword = event.rstrip('>>')
 	print(f'keyword parsed: {event_keyword}')
 
-def client_handler(command: str):
-	print(command)
-	pass
-
-
 # Run event listener in a thread
 event_thread = threading.Thread(target=listen_to_events, daemon=True)
 event_thread.start()
@@ -79,9 +89,6 @@ event_thread.start()
 client_socket = threading.Thread(target=_client_socket, daemon=True)
 client_socket.start()
 
-# Bind the socket to the path
-client_thread = threading.Thread(target=listen_for_client, daemon=True)
-client_thread.start()
 
 # Example: Send a test command
 send_command("dispatch workspace 1")
