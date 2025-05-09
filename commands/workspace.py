@@ -6,16 +6,11 @@ def _run(command):
 	except IndexError:
 		return
 
+	old_position = ''.join(spcommand._send_hypr_command("cursorpos")).replace(" ", '').split(',')
+	print(old_position)
+
 	match command[1]:
 		case "1":
-			test = spcommand._send_hypr_command('cursorpos')
-			print(test)
-			print(test)
-			print(test)
-			print(test)
-			print(test)
-			print(test)
-			print(test)
 			spcommand._send_hypr_command("dispatch workspace 1001")
 			spcommand._send_hypr_command("dispatch workspace 1002")
 			spcommand._send_hypr_command("dispatch workspace 1003")
@@ -37,3 +32,11 @@ def _run(command):
 			spcommand._send_hypr_command("dispatch workspace 1043")
 		case _:
 			print("This only supports 5 workspaces for now")
+
+	for index in old_position:
+		print(index)
+
+	print(f'this is what i\'m sending: "dispatch movecursor {old_position[0]} {old_position[1]}" ')
+	position = spcommand._send_hypr_command(f'dispatch movecursor {old_position[0]} {old_position[1]}')
+	print(position)
+	print(spcommand._send_hypr_command('cursorpos'))

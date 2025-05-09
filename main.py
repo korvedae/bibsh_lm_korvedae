@@ -33,7 +33,6 @@ def listen_to_events():
 			if not data:
 				break
 			event_handler(data.decode().strip())
-			print("Event:", data.decode().strip())
 
 def _client_socket():
 	try:
@@ -71,7 +70,6 @@ def client_handler(command_string: str):
 
 def event_handler(event: str):
 	event_keyword = event.rstrip('>>')
-	print(f'keyword parsed: {event_keyword}')
 
 # Run event listener in a thread
 event_thread = threading.Thread(target=listen_to_events, daemon=True)

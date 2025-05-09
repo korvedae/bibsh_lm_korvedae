@@ -20,4 +20,4 @@ def _send_hypr_command(command: str):
 		sock.connect(command_socket_path)
 		sock.sendall(command.encode())
 		response = sock.recv(4096)
-		print("Command Response:", response.decode().strip())
+		return response.decode().strip()
