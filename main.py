@@ -1,10 +1,12 @@
 #!/usr/bin/python3
 import socket
-import sys
-import struct
 import threading
-import time
 import os, os.path
+import shlex
+
+
+# Commands
+from commands import workspace
 
 
 # Resolve socket paths
@@ -52,30 +54,20 @@ def _client_socket():
 				data = conn.recv(1024)
 				if data:
 					command = data.decode()
-					client_handler(command)
+					client_handler(command.rstrip())
 				else:
 					print("No command specified.")
-def client_handler(command: str):
-	command = command.rstrip()
+def client_handler(command_string: str):
+	command = shlex.split(command_string)
 	print(f'Command recived "{command}"')
-	match command:
+	match command[0]:
 		case "workspace":
-			print("HELLO")
-			send_command("dispatch workspace 1001")
-			send_command("dispatch workspace 1002")
-			send_command("dispatch workspace 1003")
+			workspace._run(command)
 	print(command)
 	pass
 
 
 
-# Send a command to Hyprland
-def send_command(command: str):
-    with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as sock:
-        sock.connect(command_socket_path)
-        sock.sendall(command.encode())
-        response = sock.recv(4096)
-        print("Command Response:", response.decode().strip())
 
 def event_handler(event: str):
 	event_keyword = event.rstrip('>>')
@@ -89,9 +81,6 @@ event_thread.start()
 client_socket = threading.Thread(target=_client_socket, daemon=True)
 client_socket.start()
 
-
-# Example: Send a test command
-send_command("dispatch workspace 1")
 
 # Keep the main thread alive to receive events
 try:
