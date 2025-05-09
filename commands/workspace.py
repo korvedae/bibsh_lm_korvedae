@@ -8,16 +8,16 @@ def _run(command):
 
 	match command[1]:
 		case "1":
-			spcommand._send_hypr_command("dispatch workspace 1001")
-			spcommand._send_hypr_command("dispatch workspace 1002")
-			spcommand._send_hypr_command("dispatch workspace 1003")
+			spcommand._send_hypr_command("dispatch moveworkspacetomonitor 1001 HDMI-A-2")
+			spcommand._send_hypr_command("dispatch moveworkspacetomonitor 1002 DP-1")
+			spcommand._send_hypr_command("dispatch moveworkspacetomonitor 1003 HDMI-A-1")
 		case "2":
-			spcommand._send_hypr_command("dispatch workspace 1011")
-			spcommand._send_hypr_command("dispatch workspace 1012")
-			spcommand._send_hypr_command("dispatch workspace 1013")
+			spcommand._send_hypr_command("dispatch moveworkspacetomonitor 1011 HDMI-A-2")
+			spcommand._send_hypr_command("dispatch moveworkspacetomonitor 1012 DP-1")
+			spcommand._send_hypr_command("dispatch moveworkspacetomonitor 1013 HDMI-A-1")
 		case "3":
-			spcommand._send_hypr_command("dispatch workspace 1011")
-			spcommand._send_hypr_command("dispatch workspace 1012")
-			spcommand._send_hypr_command("dispatch workspace 1013")
+			spcommand._send_hypr_command("dispatch moveworkspacetomonitor 1011 HDMI-A-2")
+			spcommand._send_hypr_command("dispatch moveworkspacetomonitor 1012 DP-1")
+			spcommand._send_hypr_command("dispatch moveworkspacetomonitor 1013 HDMI-A-1")
 		case _:
-			print("This only supports 3 workspaces for now")
+			print("This only supports 3 moveworkspacetomonitors for now")
