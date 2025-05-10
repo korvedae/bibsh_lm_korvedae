@@ -7,7 +7,7 @@ import shlex
 
 # Commands
 from commands import workspace
-from commands import movetoworkspace
+from commands import movetoworkspacesilent
 
 
 # Resolve socket paths
@@ -63,8 +63,8 @@ def client_handler(command_string: str):
 	match command[0]:
 		case "workspace":
 			workspace._run(command)
-		case 'movetoworkspace':
-			movetoworkspace._run(command)
+		case 'movetoworkspacesilent':
+			movetoworkspacesilent._run(command)
 	print(command)
 	pass
 
