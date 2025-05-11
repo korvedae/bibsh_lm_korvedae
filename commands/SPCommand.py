@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 import socket
 import os, os.path
-import shlex
 
 
 # Resolve socket path

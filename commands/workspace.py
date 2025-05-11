@@ -1,6 +1,5 @@
 import commands.SPCommand as spcommand
 import settings
-import subprocess
 
 def _run(command):
 	try:
