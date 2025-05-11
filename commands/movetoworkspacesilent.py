@@ -1,4 +1,5 @@
 import commands.SPCommand as spcommand
+import settings
 import subprocess
 import json as json
 
@@ -23,35 +24,13 @@ def _run(command):
 
 	print(f'active workspace info: {active_workspace_info}')
 
+	# Only allow 10 spanned workspaces
+	if int(command[1]) > 9:
+		print("Parameter Error: Only 10 workspaces are allowed")
+		return
+	if len(settings.spconfig['monitors']) > 9:
+		print("Config Error: Only 9 monitors max.")
+		return
 
-	match command[1]:
-		case "1":
-			# If the cursor is on the primary monitor
-			match str(active_workspace_info['id'])[3]:
-				case "1": spcommand._send_hypr_command("dispatch movetoworkspacesilent 1001")
-				case "2": spcommand._send_hypr_command("dispatch movetoworkspacesilent 1002")
-				case "3": spcommand._send_hypr_command("dispatch movetoworkspacesilent 1003")
-		case "2":
-			match str(active_workspace_info['id'])[3]:
-				case "1": spcommand._send_hypr_command("dispatch movetoworkspacesilent 1011")
-				case "2": spcommand._send_hypr_command("dispatch movetoworkspacesilent 1012")
-				case "3": spcommand._send_hypr_command("dispatch movetoworkspacesilent 1013")
-		case "3":
-			match str(active_workspace_info['id'])[3]:
-				case "1": spcommand._send_hypr_command("dispatch movetoworkspacesilent 1021")
-				case "2": spcommand._send_hypr_command("dispatch movetoworkspacesilent 1022")
-				case "3": spcommand._send_hypr_command("dispatch movetoworkspacesilent 1023")
-		case "4":
-			match str(active_workspace_info['id'])[3]:
-				case "1": spcommand._send_hypr_command("dispatch movetoworkspacesilent 1031")
-				case "2": spcommand._send_hypr_command("dispatch movetoworkspacesilent 1032")
-				case "3": spcommand._send_hypr_command("dispatch movetoworkspacesilent 1033")
-		case "5":
-			match str(active_workspace_info['id'])[3]:
-				case "1": spcommand._send_hypr_command("dispatch movetoworkspacesilent 1041")
-				case "2": spcommand._send_hypr_command("dispatch movetoworkspacesilent 1042")
-				case "3": spcommand._send_hypr_command("dispatch movetoworkspacesilent 1043")
-		case _:
-			print("This only supports 5 workspaces for now")
 
-	spcommand._send_hypr_command(f'dispatch movecursor {old_position[0]} {old_position[1]}')
+	spcommand._send_hypr_command(f'dispatch movetoworkspacesilent 10{str(active_workspace_info['id'])[2]}{command[1]}')
