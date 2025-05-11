@@ -2,7 +2,6 @@
 	"monitors": ["DP-1", "HDMI-A-2", "HDMI-A-1"],
 	"workspace": {
 		"offset": 1000,
-		"monitor_number_mask": 0000,
-		"workspace_to_workspace_iterator": 0000
+		"mask": "00wm"
 	}
 }
