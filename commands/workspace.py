@@ -3,7 +3,7 @@ import settings
 
 def _run(command):
 	try:
-		gotdata = command[1]
+		print(command[1])
 	except IndexError:
 		return
 

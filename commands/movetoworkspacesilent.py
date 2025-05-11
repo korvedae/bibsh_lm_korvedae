@@ -6,7 +6,7 @@ import json as json
 
 def _run(command):
 	try:
-		gotdata = command[1]
+		print(command[1])
 	except IndexError:
 		return
 
@@ -22,7 +22,6 @@ def _run(command):
 	active_workspace_info = json.loads(active_workspace_raw)
 
 
-	print(f'active workspace info: {active_workspace_info}')
 
 	# Only allow 10 spanned workspaces
 	if int(command[1]) > 9:

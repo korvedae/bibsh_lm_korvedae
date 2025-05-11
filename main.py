@@ -30,16 +30,6 @@ command_socket_path = os.path.join(base_path, ".socket.sock")
 client_socket_path = f'{os.environ.get("XDG_RUNTIME_DIR")}/hypr_span.client.sock'
 
 
-# Listener for Hyprland events
-def listen_to_events():
-	with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as sock:
-		sock.connect(event_socket_path)
-		while True:
-			data = sock.recv(4096)
-			if not data:
-				break
-			event_handler(data.decode().strip())
-
 def _client_socket():
 	try:
 		os.unlink(client_socket_path)
@@ -71,14 +61,6 @@ def client_handler(command_string: str):
 	pass
 
 
-
-
-def event_handler(event: str):
-	event_keyword = event.rstrip('>>')
-
-# Run event listener in a thread
-event_thread = threading.Thread(target=listen_to_events, daemon=True)
-event_thread.start()
 
 # Create the client socket
 client_socket = threading.Thread(target=_client_socket, daemon=True)
