@@ -34,3 +34,5 @@ def _run(command):
 
 
 	spcommand._send_hypr_command(f'dispatch movetoworkspacesilent 10{str(active_workspace_info['id'])[2]}{command[1]}')
+
+	spcommand._send_hypr_command(f'dispatch movecursor {old_position[0]} {old_position[1]}')
