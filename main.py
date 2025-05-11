@@ -4,6 +4,11 @@ import threading
 import os, os.path
 import shlex
 
+# Configuration Files
+import settings
+settings.init()
+
+print(settings.spconfig)
 
 # Commands
 from commands import workspace
