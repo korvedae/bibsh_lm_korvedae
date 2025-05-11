@@ -8,7 +8,7 @@ There are two main configuaration files and they both should be placed in the .c
 
 The first one should be an normal '.conf' file, which just adheres to hyprland syntax. Use this for setting the usual hyprland keybinds, executables, env files.
 
-Todo: This probably isn't needed seeing as everything is generated at runtime. I could probably just have this script read the monitor parameters directly from hyprland, sift out the monitor names, then sort based on their id.
+~~Todo: This probably isn't needed seeing as everything is generated at runtime. I could probably just have this script read the monitor parameters directly from hyprland, sift out the monitor names, then sort based on their id.~~ This would remove the ability to set a stable order of monitors.
 The second one should be exactly named spconfig.json. This file is necessary for the script to function properly.
 Here are a list of it's configuration options:
  - Monitors: Array - List your monitors, making sure the first index is your primary monitor.
