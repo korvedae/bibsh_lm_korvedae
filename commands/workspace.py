@@ -20,8 +20,7 @@ def _run(command):
 	print(f'For workspace {command[1]}')
 	for x in range(len(settings.spconfig['monitors'])):
 
-		print(f'monitor "{settings.spconfig['monitors'][x]}" subspace 10{command[1]}{x + 1} on workspace {command[1]}')
-		print(spcommand._send_hypr_command(f'dispatch focusmonitor {settings.spconfig['monitors'][x]}'))
-		print(spcommand._send_hypr_command(f'dispatch workspace 10{x + 1}{command[1]}'))
+		spcommand._send_hypr_command(f'dispatch focusmonitor {settings.spconfig['monitors'][x]}')
+		spcommand._send_hypr_command(f'dispatch workspace 10{x + 1}{command[1]}')
 
 	spcommand._send_hypr_command(f'dispatch movecursor {old_position[0]} {old_position[1]}')

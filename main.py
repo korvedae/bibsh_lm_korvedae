@@ -50,8 +50,6 @@ def _client_socket():
 		sock.bind(client_socket_path)
 		sock.listen()
 
-		print(f'Client Socket Opened at {client_socket_path}')
-
 		while True:
 			conn, _ = sock.accept()
 			with conn:
@@ -70,7 +68,6 @@ def client_handler(command_string: str):
 			workspace._run(command)
 		case 'movetoworkspacesilent':
 			movetoworkspacesilent._run(command)
-	print(command)
 	pass
 
 
