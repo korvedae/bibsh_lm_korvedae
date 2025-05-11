@@ -1,9 +1,7 @@
 Bibsh Workspace
 This is a component of my other project, birbshell, but it can be used independently.
 
-Features:
-	- Manage workspaces in a KDE-like way ()
-
+Just lets you manage hyprland workspaces in a KDE-like way cause I needed that functionality for some reason.
 
 Configuration
 There are two main configuaration files and they both should be placed in the .config/hypr directory.
