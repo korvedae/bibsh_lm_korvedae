@@ -13,6 +13,7 @@ print(settings.spconfig)
 # Commands
 from commands import workspace
 from commands import movetoworkspacesilent
+from commands import init_workspaces
 
 
 # Resolve socket paths
@@ -60,6 +61,8 @@ def client_handler(command_string: str):
 			movetoworkspacesilent._run(command)
 	pass
 
+init_workspaces._run("")
+print("HI")
 
 
 # Create the client socket
@@ -67,9 +70,10 @@ client_socket = threading.Thread(target=_client_socket, daemon=True)
 client_socket.start()
 
 
+
 # Keep the main thread alive to receive events
 try:
     while True:
     	inp = input("Command")
 except KeyboardInterrupt:
-    print("Exiting.")
+    print("\nExiting.")
