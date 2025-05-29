@@ -7,16 +7,16 @@ import shlex
 
 def _init():
 	from bibsh_lm_korvedae.components import hyprland
-	from bibsh_lm_korvedae.components.config import LayoutConfig
+	from bibsh_lm_korvedae.components import config
 
 	old_position = ''.join(hyprland._send_hypr_command("cursorpos")).replace(" ", '').split(',')
 
 	# Only allow 10 spanned workspaces
-	if len(LayoutConfig['monitors']) > 9:
+	if len(config.LayoutConfig['monitors']) > 9:
 		print("Config Error: Only 9 monitors max.")
 		return
 
-	mon_range = len(LayoutConfig['monitors'])
+	mon_range = len(config.LayoutConfig['monitors'])
 	print(mon_range)
 
 	for x in range(mon_range):
@@ -25,7 +25,7 @@ def _init():
 
 		while i <= (y):
 			print(f'Workspace {i}')
-			hyprland._send_hypr_command(f'dispatch moveworkspacetomonitor {i} {LayoutConfig['monitors'][x]}')
+			hyprland._send_hypr_command(f'dispatch moveworkspacetomonitor {i} {config.LayoutConfig['monitors'][x]}')
 			i += 1
 
 

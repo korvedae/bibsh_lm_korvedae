@@ -1,5 +1,5 @@
 from bibsh_lm_korvedae.components import hyprland
-from bibsh_lm_korvedae.components.config import LayoutConfig
+from bibsh_lm_korvedae.components import config
 from bibsh_lm_korvedae.components import state
 
 def _run(command):
@@ -11,17 +11,17 @@ def _run(command):
 	old_position = ''.join(hyprland._send_hypr_command("cursorpos")).replace(" ", '').split(',')
 
 	# Only allow 10 spanned workspaces
-	if int(command[1]) > LayoutConfig['workspacesPerMonitor']:
-		print(f"Parameter Error: Config file defines only {LayoutConfig['layouts']} per monitor.")
+	if int(command[1]) > config.LayoutConfig['workspacesPerMonitor']:
+		print(f"Parameter Error: Config file defines only {config.LayoutConfig['layouts']} per monitor.")
 		return
-	if len(LayoutConfig['monitors']) > 9:
+	if len(config.LayoutConfig['monitors']) > 9:
 		print("Config Error: Only 9 monitors max.")
 		return
 
 	print(f'For workspace {command[1]}')
-	for x in range(len(LayoutConfig['monitors'])):
-		y = (x + 1) * LayoutConfig['layouts']
-		workspace_num = (y - LayoutConfig['layouts']) + int(command[1])
+	for x in range(len(config.LayoutConfig['monitors'])):
+		y = (x + 1) * config.LayoutConfig['layouts']
+		workspace_num = (y - config.LayoutConfig['layouts']) + int(command[1])
 		hyprland._send_hypr_command(f'dispatch workspace {workspace_num}')
 		state.write_state({
 			"current_layout" : command[1]
