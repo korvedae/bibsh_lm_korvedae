@@ -1,8 +1,8 @@
-from bibsh_lm_korvedae.commands import SPCommand as spcommand
-from bibsh_lm_korvedae.config import LayoutConfig
+from bibsh_lm_korvedae.components import hyprland
+from bibsh_lm_korvedae.components.config import LayoutConfig
 
 def _run(command):
-	old_position = ''.join(spcommand._send_hypr_command("cursorpos")).replace(" ", '').split(',')
+	old_position = ''.join(hyprland._send_hypr_command("cursorpos")).replace(" ", '').split(',')
 
 	# Only allow 10 spanned workspaces
 	if len(LayoutConfig['monitors']) > 9:
@@ -18,11 +18,11 @@ def _run(command):
 
 		while i <= (y):
 			print(f'Workspace {i}')
-			spcommand._send_hypr_command(f'dispatch moveworkspacetomonitor {i} {LayoutConfig['monitors'][x]}')
+			hyprland._send_hypr_command(f'dispatch moveworkspacetomonitor {i} {LayoutConfig['monitors'][x]}')
 			i += 1
 
 
 
 
 
-	spcommand._send_hypr_command(f'dispatch movecursor {old_position[0]} {old_position[1]}')
+	hyprland._send_hypr_command(f'dispatch movecursor {old_position[0]} {old_position[1]}')

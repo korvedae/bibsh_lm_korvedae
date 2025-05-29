@@ -1,5 +1,5 @@
-from bibsh_lm_korvedae.commands import SPCommand as spcommand
-from bibsh_lm_korvedae.config import LayoutConfig
+from bibsh_lm_korvedae.components import hyprland
+from bibsh_lm_korvedae.components.config import LayoutConfig
 import subprocess
 import json as json
 
@@ -10,7 +10,7 @@ def _run(command):
 	except IndexError:
 		return
 
-	old_position = ''.join(spcommand._send_hypr_command("cursorpos")).replace(" ", '').split(',')
+	old_position = ''.join(hyprland._send_hypr_command("cursorpos")).replace(" ", '').split(',')
 
 	active_workspace_raw = subprocess.run(
 		args=["hyprctl activeworkspace -j"],
@@ -32,6 +32,6 @@ def _run(command):
 		return
 
 
-	spcommand._send_hypr_command(f'dispatch movetoworkspacesilent 10{str(active_workspace_info['id'])[2]}{command[1]}')
+	hyprland._send_hypr_command(f'dispatch movetoworkspacesilent 10{str(active_workspace_info['id'])[2]}{command[1]}')
 
-	spcommand._send_hypr_command(f'dispatch movecursor {old_position[0]} {old_position[1]}')
+	hyprland._send_hypr_command(f'dispatch movecursor {old_position[0]} {old_position[1]}')
