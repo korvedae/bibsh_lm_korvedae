@@ -11,7 +11,6 @@ def _init():
 
 	old_position = ''.join(hyprland._send_hypr_command("cursorpos")).replace(" ", '').split(',')
 
-	# Only allow 10 spanned workspaces
 	if len(config.LayoutConfig['monitors']) > 9:
 		print("Config Error: Only 9 monitors max.")
 		return
@@ -28,24 +27,17 @@ def _init():
 			hyprland._send_hypr_command(f'dispatch moveworkspacetomonitor {i} {config.LayoutConfig['monitors'][x]}')
 			i += 1
 
-
-
-
-
 	hyprland._send_hypr_command(f'dispatch movecursor {old_position[0]} {old_position[1]}')
 
 def main():
-	# Configuration Files
 	from bibsh_lm_korvedae.components import config
 	from bibsh_lm_korvedae.components import state
 	config.init()
 	state.init()
 
-
 	# Commands
 	from bibsh_lm_korvedae.commands import layout
 	from bibsh_lm_korvedae.commands import movetolayoutsilent
-
 
 	# Resolve socket paths
 	xdg_runtime_dir = os.environ.get("XDG_RUNTIME_DIR")
@@ -54,18 +46,11 @@ def main():
 	if not xdg_runtime_dir or not hypr_sig:
 		raise EnvironmentError("Missing XDG_RUNTIME_DIR or HYPRLAND_INSTANCE_SIGNATURE environment variable.")
 
-
-	#	base_path = os.path.join(xdg_runtime_dir, "hypr", hypr_sig)
-	#	event_socket_path = os.path.join(base_path, ".socket2.sock")
-	#	command_socket_path = os.path.join(base_path, ".socket.sock")
-
 	cache_dir = f'{os.environ.get("XDG_RUNTIME_DIR")}/bibsh'
 	client_socket_path = f'{cache_dir}/bibsh_lm.client.sock'
 
 	if os.path.exists(cache_dir) == False:
 		os.mkdir(cache_dir)
-
-
 
 	def _client_socket():
 		try:
@@ -98,14 +83,10 @@ def main():
 		pass
 
 	_init()
-	print("HI")
-
 
 	# Create the client socket
 	client_socket = threading.Thread(target=_client_socket, daemon=True)
 	client_socket.start()
-
-
 
 	# Keep the main thread alive to receive events
 	try:
