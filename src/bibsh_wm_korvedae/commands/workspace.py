@@ -22,7 +22,6 @@ def _run(command):
 	for x in range(len(settings.spconfig['monitors'])):
 		y = (x + 1) * settings.spconfig['workspacesPerMonitor']
 		workspace_num = (y - settings.spconfig['workspacesPerMonitor']) + int(command[1])
-		spcommand._send_hypr_command(f'dispatch focusmonitor {settings.spconfig['monitors'][x]}')
 		spcommand._send_hypr_command(f'dispatch workspace {workspace_num}')
 		state.write_state({
 			"current_workspace" : command[1]
