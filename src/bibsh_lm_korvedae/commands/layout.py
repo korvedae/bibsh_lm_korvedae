@@ -11,7 +11,7 @@ def _run(command):
 	old_position = ''.join(hyprland._send_hypr_command("cursorpos")).replace(" ", '').split(',')
 
 	# Only allow 10 spanned workspaces
-	if int(command[1]) > config.LayoutConfig['workspacesPerMonitor']:
+	if int(command[1]) > config.LayoutConfig['layouts']:
 		print(f"Parameter Error: Config file defines only {config.LayoutConfig['layouts']} per monitor.")
 		return
 	if len(config.LayoutConfig['monitors']) > 9:
