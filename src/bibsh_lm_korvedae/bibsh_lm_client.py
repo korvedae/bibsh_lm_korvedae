@@ -11,7 +11,7 @@ def main():
 		raise EnvironmentError("Missing XDG_RUNTIME_DIR or HYPRLAND_INSTANCE_SIGNATURE environment variable.")
 
 	base_path = os.path.join(xdg_runtime_dir, "bibsh")
-	socket_path = f'{base_path}/bibsh_wm.client.sock'
+	socket_path = f'{base_path}/bibsh_lm.client.sock'
 
 	print(socket_path)
 
