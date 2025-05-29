@@ -1,9 +1,7 @@
 [project]
 name = "bibsh_wm_korvedae"
-version = "0.0.1"
-authors = [
-{ name="Korvedae", email = "korvedae@proton.me"}
-]
+version = "0.0.2"
+authors = [{ name = "Korvedae", email = "korvedae@proton.me" }]
 description = "A small script program for hyprland that emulates a single workspace across multiple monitors."
 readme = "README.md"
 requires-python = ">=3.13"
@@ -16,7 +14,7 @@ Issues = "https://github.com/korvedae/bibsh_workspace_manager/issues"
 
 [project.scripts]
 bibsh_wm = "bibsh_wm_korvedae.bibsh_wm:main"
-bibsh_client =  "bibsh_wm_korvedae.bibsh_client:main"
+bibsh_client = "bibsh_wm_korvedae.bibsh_client:main"
 
 [build-system]
 requires = ["hatchling >= 1.27"]
