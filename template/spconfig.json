@@ -1,3 +1,4 @@
 {
-	"monitors": ["DP-1", "HDMI-A-2", "HDMI-A-1"]
+	"monitors": ["DP-1", "HDMI-A-2", "HDMI-A-1"],
+	"workspacesPerMonitor": 5
 }
