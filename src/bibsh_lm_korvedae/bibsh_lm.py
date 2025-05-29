@@ -8,12 +8,13 @@ import shlex
 
 def main():
 	# Configuration Files
-	from bibsh_lm_korvedae import settings
+	from bibsh_lm_korvedae import config
+	from bibsh_lm_korvedae.config import LayoutConfig
 	from bibsh_lm_korvedae import state
-	settings.init()
+	config.init()
 	state.init()
 
-	print(settings.spconfig)
+	print(LayoutConfig)
 
 	# Commands
 	from bibsh_lm_korvedae.commands import layout

@@ -1,5 +1,5 @@
 from bibsh_lm_korvedae.commands import SPCommand as spcommand
-from bibsh_lm_korvedae import settings
+from bibsh_lm_korvedae.config import LayoutConfig
 import subprocess
 import json as json
 
@@ -27,7 +27,7 @@ def _run(command):
 	if int(command[1]) > 9:
 		print("Parameter Error: Only 10 workspaces are allowed")
 		return
-	if len(settings.spconfig['monitors']) > 9:
+	if len(LayoutConfig['monitors']) > 9:
 		print("Config Error: Only 9 monitors max.")
 		return
 
