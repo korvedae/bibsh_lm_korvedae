@@ -30,9 +30,9 @@ def main():
 		raise EnvironmentError("Missing XDG_RUNTIME_DIR or HYPRLAND_INSTANCE_SIGNATURE environment variable.")
 
 
-	base_path = os.path.join(xdg_runtime_dir, "hypr", hypr_sig)
-	event_socket_path = os.path.join(base_path, ".socket2.sock")
-	command_socket_path = os.path.join(base_path, ".socket.sock")
+#	base_path = os.path.join(xdg_runtime_dir, "hypr", hypr_sig)
+#	event_socket_path = os.path.join(base_path, ".socket2.sock")
+#	command_socket_path = os.path.join(base_path, ".socket.sock")
 
 	cache_dir = f'{os.environ.get("XDG_RUNTIME_DIR")}/bibsh'
 	client_socket_path = f'{cache_dir}/bibsh_lm.client.sock'
