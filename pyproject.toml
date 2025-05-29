@@ -1,6 +1,6 @@
 [project]
 name = "bibsh_wm_korvedae"
-version = "0.0.2"
+version = "0.0.3"
 authors = [{ name = "Korvedae", email = "korvedae@proton.me" }]
 description = "A small script program for hyprland that emulates a single workspace across multiple monitors."
 readme = "README.md"
