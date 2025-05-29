@@ -80,7 +80,7 @@ def main():
 
 	# Keep the main thread alive to receive events
 	try:
-    	while True:
-    		inp = input("Command")
+		while True:
+			inp = input("Command")
 	except KeyboardInterrupt:
-    	print("\nExiting.")
+		print("\nExiting.")
