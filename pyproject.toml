@@ -13,8 +13,8 @@ Homepage = "https://github.com/korvedae/bibsh_lm_korvedae"
 Issues = "https://github.com/korvedae/bibsh_lm_korvedae/issues"
 
 [project.scripts]
-bibsh_wm = "bibsh_lm_korvedae.bibsh_lm:main"
-bibsh_client = "bibsh_lm_korvedae.bibsh_lm_client:main"
+bibsh_lm = "bibsh_lm_korvedae.bibsh_lm:main"
+bibsh_lm_client = "bibsh_lm_korvedae.bibsh_lm_client:main"
 
 [build-system]
 requires = ["hatchling >= 1.27"]
