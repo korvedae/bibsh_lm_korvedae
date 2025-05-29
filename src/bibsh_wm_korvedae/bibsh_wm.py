@@ -8,7 +8,7 @@ import shlex
 
 def main():
 	# Configuration Files
-	import settings
+	from bibsh_wm_korvedae import settings
 	settings.init()
 
 	print(settings.spconfig)
