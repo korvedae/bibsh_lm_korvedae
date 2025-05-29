@@ -14,9 +14,9 @@ def main():
 	print(settings.spconfig)
 
 	# Commands
-	from commands import workspace
-	from commands import movetoworkspacesilent
-	from commands import init_workspaces
+	from bibsh_wm_korvedae.commands import workspace
+	from bibsh_wm_korvedae.commands import movetoworkspacesilent
+	from bibsh_wm_korvedae.commands import init_workspaces
 
 
 	# Resolve socket paths

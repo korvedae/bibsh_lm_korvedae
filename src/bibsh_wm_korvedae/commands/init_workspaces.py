@@ -1,5 +1,5 @@
-import commands.SPCommand as spcommand
-import settings
+from bibsh_wm_korvedae.commands import SPCommand as spcommand
+from bibsh_wm_korvedae import settings
 
 def _run(command):
 	old_position = ''.join(spcommand._send_hypr_command("cursorpos")).replace(" ", '').split(',')
