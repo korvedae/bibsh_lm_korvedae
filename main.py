@@ -28,7 +28,11 @@ base_path = os.path.join(xdg_runtime_dir, "hypr", hypr_sig)
 event_socket_path = os.path.join(base_path, ".socket2.sock")
 command_socket_path = os.path.join(base_path, ".socket.sock")
 
-client_socket_path = f'{os.environ.get("XDG_RUNTIME_DIR")}/hypr_span.client.sock'
+cache_dir = f'{os.environ.get("XDG_RUNTIME_DIR")}/bibsh'
+client_socket_path = f'{cache_dir}/bibsh_wm.client.sock'
+
+if os.path.exists(cache_dir) == False:
+	os.mkdir(cache_dir)
 
 
 def _client_socket():
