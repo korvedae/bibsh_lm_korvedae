@@ -1,5 +1,5 @@
-from bibsh_wm_korvedae.commands import SPCommand as spcommand
-from bibsh_wm_korvedae import settings
+from bibsh_lm_korvedae.commands import SPCommand as spcommand
+from bibsh_lm_korvedae import settings
 import subprocess
 import json as json
 

@@ -1,20 +1,20 @@
 [project]
-name = "bibsh_wm_korvedae"
-version = "0.0.3"
+name = "bibsh_lm_korvedae"
+version = "0.1.0"
 authors = [{ name = "Korvedae", email = "korvedae@proton.me" }]
-description = "A small script program for hyprland that emulates a single workspace across multiple monitors."
+description = "A small script program for hyprland that emulates a single layout (or desktop) across multiple monitors using multiple workspaces."
 readme = "README.md"
 requires-python = ">=3.13"
 license = "MIT"
 license-files = ["LICEN[CS]E*"]
 
 [project.urls]
-Homepage = "https://github.com/korvedae/bibsh_workspace_manager"
-Issues = "https://github.com/korvedae/bibsh_workspace_manager/issues"
+Homepage = "https://github.com/korvedae/bibsh_lm_korvedae"
+Issues = "https://github.com/korvedae/bibsh_lm_korvedae/issues"
 
 [project.scripts]
-bibsh_wm = "bibsh_wm_korvedae.bibsh_wm:main"
-bibsh_client = "bibsh_wm_korvedae.bibsh_client:main"
+bibsh_wm = "bibsh_lm_korvedae.bibsh_lm:main"
+bibsh_client = "bibsh_lm_korvedae.bibsh_lm_client:main"
 
 [build-system]
 requires = ["hatchling >= 1.27"]

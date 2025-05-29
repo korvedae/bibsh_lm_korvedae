@@ -8,17 +8,17 @@ import shlex
 
 def main():
 	# Configuration Files
-	from bibsh_wm_korvedae import settings
-	from bibsh_wm_korvedae import state
+	from bibsh_lm_korvedae import settings
+	from bibsh_lm_korvedae import state
 	settings.init()
 	state.init()
 
 	print(settings.spconfig)
 
 	# Commands
-	from bibsh_wm_korvedae.commands import workspace
-	from bibsh_wm_korvedae.commands import movetoworkspacesilent
-	from bibsh_wm_korvedae.commands import init_workspaces
+	from bibsh_lm_korvedae.commands import layout
+	from bibsh_lm_korvedae.commands import movetolayoutsilent
+	from bibsh_lm_korvedae.commands import init_workspaces
 
 
 	# Resolve socket paths
@@ -34,7 +34,7 @@ def main():
 	command_socket_path = os.path.join(base_path, ".socket.sock")
 
 	cache_dir = f'{os.environ.get("XDG_RUNTIME_DIR")}/bibsh'
-	client_socket_path = f'{cache_dir}/bibsh_wm.client.sock'
+	client_socket_path = f'{cache_dir}/bibsh_lm.client.sock'
 
 	if os.path.exists(cache_dir) == False:
 		os.mkdir(cache_dir)
@@ -66,9 +66,9 @@ def main():
 		print(f'Command recived "{command}"')
 		match command[0]:
 			case "workspace":
-				workspace._run(command)
+				layout._run(command)
 			case 'movetoworkspacesilent':
-				movetoworkspacesilent._run(command)
+				movetolayoutsilent._run(command)
 		pass
 
 	init_workspaces._run("")

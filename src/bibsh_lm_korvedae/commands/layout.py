@@ -1,6 +1,6 @@
-from bibsh_wm_korvedae.commands import SPCommand as spcommand
-from bibsh_wm_korvedae import settings
-from bibsh_wm_korvedae import state
+from bibsh_lm_korvedae.commands import SPCommand as spcommand
+from bibsh_lm_korvedae import settings
+from bibsh_lm_korvedae import state
 
 def _run(command):
 	try:
