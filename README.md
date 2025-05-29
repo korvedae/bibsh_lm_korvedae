@@ -7,6 +7,10 @@ There are two (technically one) main configuaration file(s) and they should be p
  - spconfig.json - Used for determining managed monitors as well as their order
  - spconfig.conf - Doesn't need to be created, but I do it so I can plug-n-play. This is just a json file with an array called "monitors", that has each monitor name as a string.
 
+The main config file, spconfig.json, asks for just 2 options:
+ - monitors, which is an array of the monitors you want bibsh_wm to manager
+ - workspacesPerMonitor, which is an int (despite the name, think of this variable as just the amount of workspaces you want)
+
 ## Caveats
 - Monitor switching happens synchronously: the more monitors you have, the slower it is
 - Due to how workspaces are "generated", a monitor needs to be focused, then the workspace for that monitor is created (switched to). This means the mouse will flicker (as I make it go back to its original position) every time you change your workspace. If I find an alternative method that doesn't move the mouse(other than directly declaring workspaces in the hyprland config), I'll use that method.
