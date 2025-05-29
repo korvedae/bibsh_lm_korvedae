@@ -2,9 +2,9 @@ import json
 import os
 
 xdg_runtime_dir = os.environ.get("XDG_RUNTIME_DIR")
-state_file = f'{os.environ.get("XDG_RUNTIME_DIR")}/bibsh/state.json'
+state_file = f'{os.environ.get("XDG_RUNTIME_DIR")}/bibsh/bibsh_lm.state.json'
 base_state = {
-	"current_workspace" : 1
+	"current_layout" : 1
 }
 
 def init():
