@@ -81,6 +81,6 @@ def main():
 	# Keep the main thread alive to receive events
 	try:
 		while True:
-			inp = input("Command")
+			pass
 	except KeyboardInterrupt:
 		print("\nExiting.")
