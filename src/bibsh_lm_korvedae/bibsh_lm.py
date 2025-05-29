@@ -5,6 +5,34 @@ import threading
 import os, os.path
 import shlex
 
+def _init():
+	from bibsh_lm_korvedae.components import hyprland
+	from bibsh_lm_korvedae.components.config import LayoutConfig
+
+	old_position = ''.join(hyprland._send_hypr_command("cursorpos")).replace(" ", '').split(',')
+
+	# Only allow 10 spanned workspaces
+	if len(LayoutConfig['monitors']) > 9:
+		print("Config Error: Only 9 monitors max.")
+		return
+
+	mon_range = len(LayoutConfig['monitors'])
+	print(mon_range)
+
+	for x in range(mon_range):
+		y = (x + 1) * 5
+		i = (y - 5) + 1
+
+		while i <= (y):
+			print(f'Workspace {i}')
+			hyprland._send_hypr_command(f'dispatch moveworkspacetomonitor {i} {LayoutConfig['monitors'][x]}')
+			i += 1
+
+
+
+
+
+	hyprland._send_hypr_command(f'dispatch movecursor {old_position[0]} {old_position[1]}')
 
 def main():
 	# Configuration Files
@@ -17,7 +45,6 @@ def main():
 	# Commands
 	from bibsh_lm_korvedae.commands import layout
 	from bibsh_lm_korvedae.commands import movetolayoutsilent
-	from bibsh_lm_korvedae.commands import init_workspaces
 
 
 	# Resolve socket paths
@@ -28,9 +55,9 @@ def main():
 		raise EnvironmentError("Missing XDG_RUNTIME_DIR or HYPRLAND_INSTANCE_SIGNATURE environment variable.")
 
 
-#	base_path = os.path.join(xdg_runtime_dir, "hypr", hypr_sig)
-#	event_socket_path = os.path.join(base_path, ".socket2.sock")
-#	command_socket_path = os.path.join(base_path, ".socket.sock")
+	#	base_path = os.path.join(xdg_runtime_dir, "hypr", hypr_sig)
+	#	event_socket_path = os.path.join(base_path, ".socket2.sock")
+	#	command_socket_path = os.path.join(base_path, ".socket.sock")
 
 	cache_dir = f'{os.environ.get("XDG_RUNTIME_DIR")}/bibsh'
 	client_socket_path = f'{cache_dir}/bibsh_lm.client.sock'
@@ -70,7 +97,7 @@ def main():
 				movetolayoutsilent._run(command)
 		pass
 
-	init_workspaces._run("")
+	_init()
 	print("HI")
 
 
