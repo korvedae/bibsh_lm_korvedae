@@ -9,7 +9,9 @@ import shlex
 def main():
 	# Configuration Files
 	from bibsh_wm_korvedae import settings
+	from bibsh_wm_korvedae import state
 	settings.init()
+	state.init()
 
 	print(settings.spconfig)
 
@@ -36,6 +38,7 @@ def main():
 
 	if os.path.exists(cache_dir) == False:
 		os.mkdir(cache_dir)
+
 
 
 	def _client_socket():
