@@ -31,7 +31,8 @@ def _run(command):
 		print("Config Error: Only 9 monitors max.")
 		return
 
+	w = (config.LayoutConfig['monitors'].index(active_workspace_info.monitor) * config.LayoutConfig['layouts']) + command[1]
 
-	hyprland._send_hypr_command(f'dispatch movetoworkspacesilent 10{str(active_workspace_info['id'])[2]}{command[1]}')
+	hyprland._send_hypr_command(f'dispatch movetoworkspacesilent {w}')
 
 	hyprland._send_hypr_command(f'dispatch movecursor {old_position[0]} {old_position[1]}')
